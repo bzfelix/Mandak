@@ -1,0 +1,93 @@
+﻿@model Mandak.WebApplication.Models.EventViewModel
+
+<section class="podcast-hero-area section-padding-80 bg-overlay bg-img jarallax" style="background-image: url(@Url.Content($"~/img/{Model.MainImage.Source}"));">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="podcast-hero-text section-padding-80 d-flex align-items-center">
+                    <div class="podcast-txt- pr-5">
+                        <h2>@Model.Title</h2>
+                        <div class="podcast-meta-data">
+                            <a class="event-date"><i class="icon_calendar"></i> @Model.Date</a>
+                            <a class="event-address"><i class="icon_pin_alt"></i> @Model.Location</a>
+                            @if (@Model.Conductor != null)
+                            {
+                                <a class="event-address"><i class="icon_music"></i> @Html.DisplayNameFor(c => c.Conductor): @Model.Conductor </a>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@foreach (var audio in Model.Audios)
+{
+    <div class="podcast-audio-player-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="audio-player">
+                        <audio preload="auto" controls>
+                            <source src="~/audio/@audio.Source">
+                        </audio>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@if (Model.Images.Any())
+{
+    <section class="razo-charts-portfolio-area section-padding-80">
+        <div class="container">
+            <div class="row">
+                @foreach (var image in Model.Images)
+                {
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <div class="single-charts-portfolio mb-30">
+                            <a href="~/img/@image.Source">
+                                <img src="~/img/@image.Source" alt="@image.Source">
+                            </a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+}
+
+@if (!string.IsNullOrEmpty(Model.Description))
+{
+    <section class="blog-details-area section-padding-80">
+        <div class="container">
+            <div class="post-details-text">
+                <div class="row justify-content-center">
+                    <div class="col-12 col-sm-10 col-xl-9">
+                        @Model.Description
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+@if (Model.Videos.Any())
+{
+    <section class="razo-trending-video-area section-padding-80-0 mb-50">
+        <div class="container">
+            <div class="row">
+                @foreach (var video in Model.Videos)
+                {
+                    <div class="col-12">
+                        <div class="featured-trending-video mb-30 wow fadeInUp" data-wow-delay="100ms">
+                            <iframe src="@video.Source" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+}

@@ -1,0 +1,2 @@
+$i = 1
+Get-ChildItem | %{Rename-Item $_ -NewName ('{0}.jpg' -f $i++)}

@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Mandak.WebApplication.Models.EventViewModel>
+
+<section class="event-welcome-area bg-overlay bg-img jarallax" style="background-image: url(@Url.Content("~/img/bg-img/gallery.jpg"));">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-9">
+                <div class="event-welcome-text text-center">
+                    <h2>Galéria</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="event-search-area section-padding-80"></div>
+
+<section class="razo-events-area section-padding-0-80">
+    <div class="container">
+        <div class="row">
+            @foreach (var concert in Model)
+            {
+                <div class="col-12">
+                    <div class="single-razo-event-area d-flex flex-wrap align-items-center mb-50 wow fadeInUp" data-wow-delay="100ms">
+                            <div class="event-thumbnail">
+                                @if (concert.MainImage != null)
+                                {
+                                <img src="~/img/@concert.MainImage.Source" alt="@concert.MainImage.Source">
+                                }
+                            </div>
+                        <div class="event-content d-flex align-items-center">
+                            <div class="event-text">
+                                <h5>@concert.Title</h5>
+
+                                <div class="event-meta">
+                                    <a href="#" class="event-date"><i class="icon_calendar"></i> @concert.Date</a>
+                                    @if (concert.Conductor != null)
+                                    {
+                                        <a href="#" class="event-address"><i class="icon_music"></i> @Html.DisplayNameFor(c => c.Conductor): @concert.Conductor</a>
+                                    }
+                                    <a href="#" class="event-address"><i class="icon_pin_alt"></i> @concert.Location</a>
+                                </div>
+
+                                <p>@concert.Description</p>
+                                
+                                @if (concert.HasFiles)
+                                {
+                                    <a asp-controller="Gallery"
+                                       asp-action="Details"
+                                       asp-route-id="@concert.PublicId"
+                                       class="btn razo-btn">
+                                        Tovább
+                                    </a> 
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

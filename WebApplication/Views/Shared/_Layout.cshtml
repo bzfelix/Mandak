@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Mandák kórus</title>
+
+    <link rel="icon" href="~/img/core-img/favicon.ico">
+
+    <link rel="stylesheet" href="~/style.css">
+</head>
+<body>
+    <div id="preloader">
+        <div>
+            <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+            <span>Kérem, várjon...</span>
+        </div>
+    </div>
+
+    <div class="razo-social-share-area">
+        <a href="https://www.facebook.com/Mandakkorus/" class="facebook" target="_blank">
+            <i class="fa fa-facebook"></i>
+        </a>
+        <a href="https://www.youtube.com/channel/UCVXDAmzjSaSR4K7B2_hTU8A/featured"
+           class="youtube" target="_blank">
+            <i class="fa fa-youtube"></i>
+        </a>
+    </div>
+
+    <header class="header-area">
+        <div class="main-header-area">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <nav class="classy-navbar justify-content-between" id="razoNav">
+                        <a class="nav-brand" asp-controller="Home" asp-action="Index">
+                            <img src="~/img/core-img/logo.png" alt="Kezdőlap">
+                        </a>
+
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler">
+                                <span></span><span></span><span></span>
+                            </span>
+                        </div>
+
+                        <div class="classy-menu">
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap">
+                                    <span class="top"></span><span class="bottom"></span>
+                                </div>
+                            </div>
+
+                            <div class="classynav">
+                                <ul id="nav">
+                                    <li>
+                                        <a asp-controller="Home" asp-action="Index">Kezdőlap</a>
+                                    </li>
+                                    <li>
+                                        <a asp-controller="Home" asp-action="News">Események, aktualitások</a>
+                                    </li>
+                                    <li>
+                                        <a asp-controller="Gallery" asp-action="Index">Galéria</a>
+                                    </li>
+                                </ul>
+
+                                <div class="social-share-icon">
+                                    <i class="social_share"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    @RenderBody()
+
+    <footer class="footer-area">
+        <div class="main-footer-area section-padding-80-0">
+            <div class="container">
+                <div class="row justify-content-between">
+                    <div class="col-12 col-sm-6 col-md-4 col-xl-3">
+                        <div class="single-footer-widget mb-80">
+                            <a asp-controller="Home" asp-action="Index" class="footer-logo">
+                                <img src="~/img/core-img/logo2.png" alt="">
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-md-4 col-xl-3">
+                        <div class="single-footer-widget mb-80">
+                            <h4 class="widget-title">Pro Musica Lutherana alapítvány</h4>
+                            <div class="footer-content">
+                                <div class="single-contact-info d-flex">
+                                    <div class="icon">
+                                        <i class="icon_pin"></i>
+                                    </div>
+                                    <div class="text">
+                                        <a href="https://goo.gl/maps/ZUEwWQ4Q6bCQxu2T8" target="_blank">1026 Bp. Szilágyi Erzsébet fasor 17 1/7</a>
+                                    </div>
+                                </div>
+
+                                <div class="single-contact-info d-flex">
+                                    <div class="icon">
+                                        <i class="icon_phone"></i>
+                                    </div>
+                                    <div class="text">
+                                        <a href="tel:+703865628">+70/386-56-28</a>
+                                    </div>
+                                </div>
+
+                                <div class="single-contact-info d-flex">
+                                    <div class="icon">
+                                        <i class="icon_mail_alt"></i>
+                                    </div>
+                                    <div class="text">
+                                        <script TYPE="text/javascript">
+                                            emailE = 'mandak.hu';
+                                            emailE = ('korus' + '@@' + emailE);
+                                            document.write('<A href="mailto:' + emailE + '">' + emailE + '</a>');
+                                        </script>
+                                    </div>
+                                </div>
+
+                                <div class="single-contact-info d-flex">
+                                    <div class="icon">
+                                        <i class="icon_globe-2"></i>
+                                    </div>
+                                    <div class="text">
+                                        <a asp-controller="Home" asp-action="Index">mandak.hu</a>
+                                    </div>
+                                </div>
+
+                                <div class="single-contact-info d-flex">
+                                    <div class="icon">
+                                        <i class="icon_creditcard"></i>
+                                    </div>
+                                    <div class="text">
+                                        <a href="#">11705008-20431675</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-md-4 col-xl-3">
+                        <div class="single-footer-widget mb-80">
+                            <img src="~/img/core-img/luther_rozsa.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="copywrite-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="copywrite-text">
+                            <p>
+                                &copy;
+                                <script>document.write(new Date().getFullYear());</script> <a href="https://www.linkedin.com/in/zolt%C3%A1n-f%C3%A9lix-b%C3%A1r%C3%A1ndi-772409116">Bárándi Zoltán Félix</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/popper.min.js"></script>
+    <script src="~/js/bootstrap.min.js"></script>
+    <script src="~/js/razo.bundle.js"></script>
+    <script src="~/js/default-assets/active.js"></script>
+</body>
+</html>
