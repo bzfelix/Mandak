@@ -12,9 +12,12 @@ namespace Mandak.WebApplication
 
         private static IWebHostBuilder CreateWebHostBuilder(string[] args)
         {
-            return WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>()
-                /*.UseUrls("http://localhost:5050")*/;
+            var builder = WebHost.CreateDefaultBuilder(args).UseStartup<Startup>();
+#if DEBUG
+            builder.UseUrls("http://localhost:5050");
+#endif
+
+            return builder;
         }
     }
 }

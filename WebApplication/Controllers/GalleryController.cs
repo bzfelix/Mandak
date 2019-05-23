@@ -24,6 +24,7 @@ namespace Mandak.WebApplication.Controllers
             // ReSharper disable once LoopCanBeConvertedToQuery
             foreach (var concert in Context.Concerts
                 .Include(a => a.Texts)
+                .Include(a=>a.Videos)
                 .OrderByDescending(a => a.Time))
             {
                 var text = concert.Texts.GetTextForLocale();
