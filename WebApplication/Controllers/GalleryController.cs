@@ -5,6 +5,7 @@ using Mandak.DataAccess;
 using Mandak.DataAccess.Entities;
 using Mandak.WebApplication.Extensions;
 using Mandak.WebApplication.Models;
+using Microsoft.AspNetCore.Identity.UI.Pages.Internal.Account.Manage;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -24,7 +25,7 @@ namespace Mandak.WebApplication.Controllers
             // ReSharper disable once LoopCanBeConvertedToQuery
             foreach (var concert in Context.Concerts
                 .Include(a => a.Texts)
-                .Include(a=>a.Videos)
+                .Include(a => a.Videos)
                 .OrderByDescending(a => a.Time))
             {
                 var text = concert.Texts.GetTextForLocale();
@@ -52,10 +53,7 @@ namespace Mandak.WebApplication.Controllers
         [HttpGet("/gallery/{publicId}")]
         public async Task<IActionResult> Details(string publicId)
         {
-            var concert = await Context.Concerts
-                .Include(c => c.Texts)
-                .Include(c=>c.Videos)
-                .SingleOrDefaultAsync(c => c.PublicId == publicId);
+            var concert = await FindConcert(publicId);
 
             if (concert == null)
             {
@@ -83,17 +81,35 @@ namespace Mandak.WebApplication.Controllers
                 MainImage = GetImages(concert, "bg-img/galleryDetails.jpg").First()
             };
 
+            const string url = "http://mandak.hu";
+            ViewBag.MetaUrl = $"{url}/{publicId}";
+            ViewBag.MetaTitle = texts.Title;
+            ViewBag.MetaDescription = texts.Description;
+            ViewBag.MetaImage = $"{url}/img/{model.MainImage.Source}";
 
             return View(model);
+        }
+
+        private async Task<Event> FindConcert(string publicId)
+        {
+            return await Context.Concerts
+                .Include(c => c.Texts)
+                .Include(c => c.Videos)
+                .SingleOrDefaultAsync(c => c.PublicId == publicId);
         }
 
         private static IEnumerable<MultiMediaFile> GetImages(Event concert, string fallBackImage = null)
         {
             var images = new List<MultiMediaFile>();
-            for (var i = 0; i < concert.NumberOfImages; i++)
+
+            if (concert != null)
             {
-                images.Add(new MultiMediaFile($"bg-img/events/{concert.PublicId}/{i + 1}.jpg"));
+                for (var i = 0; i < concert.NumberOfImages; i++)
+                {
+                    images.Add(new MultiMediaFile($"bg-img/events/{concert.PublicId}/{i + 1}.jpg"));
+                }
             }
+
 
             if (!images.Any() && fallBackImage != null)
             {
