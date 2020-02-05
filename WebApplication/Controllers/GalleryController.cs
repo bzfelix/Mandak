@@ -39,7 +39,7 @@ namespace Mandak.WebApplication.Controllers
                     Date = concert.Time.GetDate(),
                     Location = concert.Location,
                     Conductor = concert.Conductor,
-                    Description = text.Description,
+                    Description = $"{text.Description.FirstSentence()} ...",
                     MainImage = mainImage,
                     PublicId = concert.PublicId,
                     HasFiles = hasVideos || concert.NumberOfAudios > 0 || concert.NumberOfImages > 0
