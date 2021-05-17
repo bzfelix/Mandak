@@ -29,7 +29,11 @@
                             </div>
                         <div class="event-content d-flex align-items-center">
                             <div class="event-text">
-                                <h5>@concert.Title</h5>
+                                <a asp-controller="Gallery"
+                                   asp-action="Details"
+                                   asp-route-id="@concert.PublicId">
+                                    <h5>@concert.Title</h5>
+                                </a>
 
                                 <div class="event-meta">
                                     <a href="#" class="event-date"><i class="icon_calendar"></i> @concert.Date</a>
@@ -40,7 +44,7 @@
                                     <a href="#" class="event-address"><i class="icon_pin_alt"></i> @concert.Location</a>
                                 </div>
 
-                                <p>@concert.Description</p>
+                                <p>@Html.Raw(concert.Description)</p>
                                 
                                 @if (concert.HasFiles)
                                 {

@@ -5,7 +5,6 @@ using Mandak.DataAccess;
 using Mandak.DataAccess.Entities;
 using Mandak.WebApplication.Extensions;
 using Mandak.WebApplication.Models;
-using Microsoft.AspNetCore.Identity.UI.Pages.Internal.Account.Manage;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 

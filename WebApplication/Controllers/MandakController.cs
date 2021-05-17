@@ -11,7 +11,8 @@ namespace Mandak.WebApplication.Controllers
         public MandakController(MandakContext context)
         {
             Context = context;
-            Context.Database.Migrate();
+            Context.Database.EnsureCreated();
+            Context.Database.MigrateAsync();
         }
     }
 }

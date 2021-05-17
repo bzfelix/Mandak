@@ -6,7 +6,6 @@
             <div class="col-12 col-lg-9">
                 <div class="event-welcome-text text-center">
                     <h2>Hírek, aktualitások</h2>
-                    @*<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>*@
                 </div>
             </div>
         </div>
@@ -33,7 +32,7 @@
                                     <a class="event-address"><i class="icon_pin_alt"></i> @Html.DisplayNameFor(a => a.Location): @article.Location</a>
                                     <a class="event-address"><i class="icon_music"></i> @Html.DisplayNameFor(a => a.Conductor): @article.Conductor</a>
                                 </div>
-                                <p>@article.Description</p>
+                                <p>@Html.Raw(article.Description)</p>
                             </div>
                         </div>
                     </div>
