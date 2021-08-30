@@ -4,6 +4,7 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <AssemblyName>Mandak.WebApplication</AssemblyName>
     <RootNamespace>Mandak.WebApplication</RootNamespace>
+    <UserSecretsId>a737a54f-87de-4ead-95ee-51695537d96d</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

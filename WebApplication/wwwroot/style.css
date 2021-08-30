@@ -2853,4 +2853,8 @@ input:focus { outline: none; }
     margin-bottom: 0;
 }
 
+#logo {
+    height: 32px;
+}
+
 /*# sourceMappingURL=style.css.map */
